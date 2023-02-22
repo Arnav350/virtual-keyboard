@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [message, setMessage] = useState("");
+  // const [capital, setCapital] = useState(false);
+
   return (
-    <div className="container">
-      <input type="text" className="input" />
+    <div className="container" onKeyDown={(event) => console.log(event.key)}>
+      <input
+        type="text"
+        value={message}
+        className="input"
+        onChange={(event) => setMessage(event.target.value)}
+      />
       <div className="keyboard">
         <div className="row">
           <div className="key">`</div>
@@ -20,10 +28,10 @@ function App() {
           <div className="key">0</div>
           <div className="key">-</div>
           <div className="key">=</div>
-          <div className="key key__backspace">{"<"}--</div>
+          <div className="key key__backspace">{"<"}---</div>
         </div>
         <div className="row">
-          <div className="key key__tab">tab</div>
+          <div className="key key__tab">Tab</div>
           <div className="key">q</div>
           <div className="key">w</div>
           <div className="key">e</div>
@@ -39,7 +47,7 @@ function App() {
           <div className="key key__backslash">\</div>
         </div>
         <div className="row">
-          <div className="key key__caps">Caps Lock</div>
+          <div className="key key__caps">Caps</div>
           <div className="key">a</div>
           <div className="key">s</div>
           <div className="key">d</div>
@@ -54,7 +62,7 @@ function App() {
           <div className="key key__enter">Enter</div>
         </div>
         <div className="row">
-          <div className="key key__shift">Shift</div>
+          <div className="key key__shift-left">Shift</div>
           <div className="key">z</div>
           <div className="key">x</div>
           <div className="key">c</div>
@@ -65,10 +73,10 @@ function App() {
           <div className="key">,</div>
           <div className="key">.</div>
           <div className="key">/</div>
-          <div className="key key__shift">Shift</div>
+          <div className="key key__shift-right">Shift</div>
         </div>
         <div className="row">
-          <div className="key__space"></div>
+          <div className="key key__space"></div>
         </div>
       </div>
     </div>
