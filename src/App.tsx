@@ -1,12 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<string>("");
   // const [capital, setCapital] = useState(false);
+  const key = document.querySelectorAll<HTMLDivElement>(".key");
+
+  function handlePress(event: any) {
+    for (let i = 0; i < key.length; i++) {
+      key[i].style.backgroundColor = "#333";
+      if (key[i].innerHTML === event.key) {
+        key[i].style.backgroundColor = "#ddd";
+      }
+    }
+  }
+
+  // function handleClick(key: any) {
+  //   console.log(key.innerHTML);
+  // }
+
+  // useEffect(() => {
+  //   for (let i = 0; i < key.length; i++) {
+  //     key[i].addEventListener("click", () => handleClick(key[i]));
+  //     key[i].removeEventListener("click", () => handleClick(key[i]));
+  //   }
+  // }, [key]);
 
   return (
-    <div className="container" onKeyDown={(event) => console.log(event.key)}>
+    <div className="container" onKeyDown={(event: any) => handlePress(event)}>
       <input
         type="text"
         value={message}
@@ -28,7 +49,7 @@ function App() {
           <div className="key">0</div>
           <div className="key">-</div>
           <div className="key">=</div>
-          <div className="key key__backspace">{"<"}---</div>
+          <div className="key key__backspace">Backspace</div>
         </div>
         <div className="row">
           <div className="key key__tab">Tab</div>
@@ -47,7 +68,7 @@ function App() {
           <div className="key key__backslash">\</div>
         </div>
         <div className="row">
-          <div className="key key__caps">Caps</div>
+          <div className="key key__caps">CapsLock</div>
           <div className="key">a</div>
           <div className="key">s</div>
           <div className="key">d</div>
@@ -76,7 +97,7 @@ function App() {
           <div className="key key__shift-right">Shift</div>
         </div>
         <div className="row">
-          <div className="key key__space"></div>
+          <div className="key key__space"> </div>
         </div>
       </div>
     </div>

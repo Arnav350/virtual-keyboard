@@ -20,7 +20,7 @@
   width: 100%;
   background-color: #f8f8f8;
   font-size: 20px;
-  border: 2px solid #333333;
+  border: 2px solid #333;
   border-radius: 8px;
 }
 
@@ -47,12 +47,13 @@
   justify-content: center;
   padding: 1%;
   width: 5%;
-  background-color: #333333;
+  background-color: #333;
   font-size: 18px;
   color: #f8f8f8;
   border-radius: 4px;
   aspect-ratio: 1 / 1;
   cursor: pointer;
+  transition: background-color 100ms;
 }
 
 .key__tab,
