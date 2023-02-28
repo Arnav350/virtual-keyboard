@@ -1,30 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 
 function App() {
+  const input = useRef<HTMLInputElement>(null!);
+
   const [message, setMessage] = useState<string>("");
-  // const [capital, setCapital] = useState(false);
-  const key = document.querySelectorAll<HTMLDivElement>(".key");
 
   function handlePress(event: any) {
-    for (let i = 0; i < key.length; i++) {
-      key[i].style.backgroundColor = "#333";
-      if (key[i].innerHTML === event.key) {
-        key[i].style.backgroundColor = "#ddd";
+    const keys = document.querySelectorAll<HTMLDivElement>(".key");
+    for (let i = 0; i < keys.length; i++) {
+      keys[i].style.backgroundColor = "#333";
+      if (keys[i].innerHTML === event.key) {
+        keys[i].style.backgroundColor = "#ddd";
       }
     }
+    console.log(message);
   }
 
-  // function handleClick(key: any) {
-  //   console.log(key.innerHTML);
-  // }
+  function handleClick(key: any) {
+    const keys = document.querySelectorAll<HTMLDivElement>(".key");
+    for (let i = 0; i < keys.length; i++) {
+      keys[i].style.backgroundColor = "#333";
+      if (keys[i].innerHTML === key.innerHTML) {
+        keys[i].style.backgroundColor = "#ddd";
+        if (key.innerHTML === "&lt;---") {
+          setMessage(input.current.value.slice(0, -1));
+        } else if (key.innerHTML === "Caps") {
+        } else if (key.innerHTML === "Shift") {
+        } else {
+          setMessage(input.current.value + key.innerHTML);
+        }
+      }
+    }
+    input.current.focus();
+  }
 
-  // useEffect(() => {
-  //   for (let i = 0; i < key.length; i++) {
-  //     key[i].addEventListener("click", () => handleClick(key[i]));
-  //     key[i].removeEventListener("click", () => handleClick(key[i]));
-  //   }
-  // }, [key]);
+  useEffect(() => {
+    const keys = document.querySelectorAll<HTMLDivElement>(".key");
+    for (let i = 0; i < keys.length; i++) {
+      keys[i].addEventListener("click", () => handleClick(keys[i]));
+    }
+    input.current.focus();
+  }, []);
 
   return (
     <div className="container" onKeyDown={(event: any) => handlePress(event)}>
@@ -32,7 +49,8 @@ function App() {
         type="text"
         value={message}
         className="input"
-        onChange={(event) => setMessage(event.target.value)}
+        ref={input}
+        onChange={(event: any) => setMessage(event.target.value)}
       />
       <div className="keyboard">
         <div className="row">
@@ -49,7 +67,7 @@ function App() {
           <div className="key">0</div>
           <div className="key">-</div>
           <div className="key">=</div>
-          <div className="key key__backspace">Backspace</div>
+          <div className="key key__backspace">&lt;---</div>
         </div>
         <div className="row">
           <div className="key key__tab">Tab</div>
@@ -68,7 +86,7 @@ function App() {
           <div className="key key__backslash">\</div>
         </div>
         <div className="row">
-          <div className="key key__caps">CapsLock</div>
+          <div className="key key__caps">Caps</div>
           <div className="key">a</div>
           <div className="key">s</div>
           <div className="key">d</div>
