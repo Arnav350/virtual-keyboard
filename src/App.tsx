@@ -5,6 +5,7 @@ function App() {
   const input = useRef<HTMLInputElement>(null!);
 
   const [message, setMessage] = useState<string>("");
+  const [caps, setCaps] = useState(false);
 
   function handlePress(event: any) {
     const keys = document.querySelectorAll<HTMLDivElement>(".key");
@@ -14,7 +15,6 @@ function App() {
         keys[i].style.backgroundColor = "#ddd";
       }
     }
-    console.log(message);
   }
 
   function handleClick(key: any) {
@@ -26,7 +26,9 @@ function App() {
         if (key.innerHTML === "&lt;---") {
           setMessage(input.current.value.slice(0, -1));
         } else if (key.innerHTML === "Caps") {
+          setCaps(!caps);
         } else if (key.innerHTML === "Shift") {
+          setCaps(!caps);
         } else {
           setMessage(input.current.value + key.innerHTML);
         }
