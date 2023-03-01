@@ -5,7 +5,7 @@ function App() {
   const input = useRef<HTMLInputElement>(null!);
 
   const [message, setMessage] = useState<string>("");
-  const [caps, setCaps] = useState(false);
+  const [letterCase, setLetterCase] = useState<string>("normal");
 
   function handlePress(event: any) {
     const keys = document.querySelectorAll<HTMLDivElement>(".key");
@@ -26,9 +26,7 @@ function App() {
         if (key.innerHTML === "&lt;---") {
           setMessage(input.current.value.slice(0, -1));
         } else if (key.innerHTML === "Caps") {
-          setCaps(!caps);
         } else if (key.innerHTML === "Shift") {
-          setCaps(!caps);
         } else {
           setMessage(input.current.value + key.innerHTML);
         }
@@ -69,7 +67,7 @@ function App() {
           <div className="key">0</div>
           <div className="key">-</div>
           <div className="key">=</div>
-          <div className="key key__backspace">&lt;---</div>
+          <div className="key key__backspace">{"<"}--</div>
         </div>
         <div className="row">
           <div className="key key__tab">Tab</div>
@@ -85,7 +83,7 @@ function App() {
           <div className="key">p</div>
           <div className="key">{"["}</div>
           <div className="key">{"]"}</div>
-          <div className="key key__backslash">\</div>
+          <div className="key">\</div>
         </div>
         <div className="row">
           <div className="key key__caps">Caps</div>

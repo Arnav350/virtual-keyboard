@@ -20,7 +20,7 @@ body {
   padding: 0.5%;
   height: 5%;
   max-width: 760px;
-  width: 100%;
+  width: 80%;
   font-size: 20px;
   border: 2px solid #333;
   border-radius: 8px;
@@ -46,10 +46,10 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1%;
-  width: 5%;
+  width: 6%;
   background-color: #333;
   border: 2px solid #fff;
-  font-size: 18px;
+  font-size: 20px;
   color: #fff;
   border-radius: 4px;
   aspect-ratio: 1 / 1;
@@ -65,14 +65,14 @@ body {
 .key__caps,
 .key__shift-left {
   justify-content: flex-start;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .key__backspace,
 .key__enter,
 .key__shift-right {
   justify-content: flex-end;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .key__backspace,
@@ -84,25 +84,25 @@ body {
 
 .key__caps,
 .key__enter {
-  width: 8.75%;
-  aspect-ratio: 8.75 / 5;
+  width: 9.75%;
+  aspect-ratio: 39 / 20;
 }
 
 .key__shift-left,
 .key__shift-right {
-  width: 11.25%;
-  aspect-ratio: 11.25 / 5;
+  width: 12.75%;
+  aspect-ratio: 51 / 20;
 }
 
 .key__space {
-  width: 30%;
+  width: 36%;
   aspect-ratio: 6 / 1;
 }
 
 @media (max-width: 768px) {
   .key {
     border-width: 1px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .key__tab,
@@ -111,6 +111,21 @@ body {
   .key__backspace,
   .key__enter,
   .key__shift-right {
-    font-size: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .key {
+    font-size: 12px;
+  }
+
+  .key__tab,
+  .key__caps,
+  .key__shift-left,
+  .key__backspace,
+  .key__enter,
+  .key__shift-right {
+    font-size: 9px;
   }
 }
