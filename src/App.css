@@ -61,18 +61,27 @@ body {
   opacity: 0.8;
 }
 
+.normal {
+  display: block;
+}
+
+.shift,
+.caps {
+  display: none;
+}
+
 .key__tab,
 .key__caps,
 .key__shift-left {
   justify-content: flex-start;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .key__backspace,
 .key__enter,
 .key__shift-right {
   justify-content: flex-end;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .key__backspace,
@@ -111,7 +120,7 @@ body {
   .key__backspace,
   .key__enter,
   .key__shift-right {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -126,6 +135,6 @@ body {
   .key__backspace,
   .key__enter,
   .key__shift-right {
-    font-size: 9px;
+    font-size: 8px;
   }
 }
